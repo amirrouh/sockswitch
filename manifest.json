@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "Proxy Toggle",
+  "name": "SockSwitch",
   "version": "1.0.0",
   "description": "Toggle SOCKS5 proxy routing through an SSH tunnel",
   "permissions": ["proxy", "storage"],

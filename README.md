@@ -1,4 +1,4 @@
-# Proxy Toggle
+# SockSwitch
 
 Toggle SOCKS5 proxy through an SSH tunnel. For Chrome, Brave, Edge, and other Chromium browsers.
 
