@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="popup.css">
+  <title>Proxy Toggle</title>
+</head>
+<body>
+  <div id="app">
+    <header>
+      <span class="title">Proxy Toggle</span>
+      <button id="settings-btn" class="icon-btn" title="Settings">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="3"/>
+          <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+        </svg>
+      </button>
+    </header>
+
+    <div id="view-container">
+      <!-- Wizard View -->
+      <div id="wizard-view" class="view">
+        <div class="status-icon status-disconnected">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="1" y1="1" x2="23" y2="23"/>
+            <path d="M16.72 11.06A10.94 10.94 0 0 1 19 12.55"/>
+            <path d="M5 12.55a10.94 10.94 0 0 1 5.17-2.39"/>
+            <path d="M10.71 5.05A16 16 0 0 1 22.56 9"/>
+            <path d="M1.42 9a15.91 15.91 0 0 1 4.7-2.88"/>
+            <path d="M8.53 16.11a6 6 0 0 1 6.95 0"/>
+            <line x1="12" y1="20" x2="12.01" y2="20"/>
+          </svg>
+        </div>
+        <p class="status-text">Tunnel not connected</p>
+        <p class="status-sub">Run this command to start your SSH tunnel:</p>
+        <div class="command-block">
+          <code id="ssh-command"></code>
+          <button id="copy-btn" class="icon-btn" title="Copy command">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+            </svg>
+          </button>
+        </div>
+        <button id="check-btn" class="btn btn-secondary">Check again</button>
+      </div>
+
+      <!-- Toggle View -->
+      <div id="toggle-view" class="view hidden">
+        <div class="toggle-container">
+          <label class="toggle-switch">
+            <input type="checkbox" id="proxy-toggle">
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+        <p id="toggle-status" class="status-text"></p>
+        <p id="toggle-destination" class="status-sub"></p>
+        <div class="command-block command-block-sm">
+          <code id="toggle-ssh-command"></code>
+        </div>
+      </div>
+
+      <!-- Settings View -->
+      <div id="settings-view" class="view hidden">
+        <button id="back-btn" class="icon-btn back-btn" title="Back">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="19" y1="12" x2="5" y2="12"/>
+            <polyline points="12 19 5 12 12 5"/>
+          </svg>
+        </button>
+        <h2 class="settings-title">Settings</h2>
+        <div class="field">
+          <label for="input-host">SSH Host</label>
+          <input type="text" id="input-host" placeholder="user@hostname">
+        </div>
+        <div class="field">
+          <label for="input-port">Local Port</label>
+          <input type="number" id="input-port" placeholder="1080" value="1080">
+        </div>
+        <button id="save-btn" class="btn btn-primary">Save</button>
+      </div>
+    </div>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>
